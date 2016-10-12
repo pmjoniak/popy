@@ -9,7 +9,7 @@
 
 # po znaku "#" rozpoczyna się komentarz
 
-from math import sqrt # pierwiastek kwadratowy
+from math import sqrt  # pierwiastek kwadratowy
 
 
 def potega(a,n):
