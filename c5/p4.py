@@ -36,14 +36,14 @@ def zlicz(znak, napis):
 
 def murek(prog, kolory):
 	kolor = kolory[0]
-	# N = zlicz('f', prog)
-	pozycja = 0
+	rysuj = True
 	for x in prog:
 		if x == 'f':
-			# a = pozycja / N
-			kwadrat(BOK, kolor)
-			pozycja += 1
+			if rysuj:
+				kwadrat(BOK, kolor)
 			fd(BOK)
+		elif x == 'b':
+			bk(BOK)
 		elif x == 'r':
 			rt(90)
 			fd(BOK)
@@ -51,16 +51,16 @@ def murek(prog, kolory):
 			bk(BOK)
 			lt(90)
 		elif x == 'u':
-			print('pu')
+			rysuj = False
 			pu()
 		elif x == 'd':
+			rysuj = True
 			pd()
 		elif x in '0123456789':
 			kolor = kolory[int(x)]
 
+
 s = 4 * ('0' + 5 * 'f' + '1' + 5 * 'f' + 'u' + 10 * 'b' + 'r' + 'd')
 print(s)
-murek(s , [(0.5, 1, 0), (0, 0, 1)])
-turtle.done()
-
-
+murek(s, [(0.5, 1, 0), (0, 0, 1)])
+done()
