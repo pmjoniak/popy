@@ -60,11 +60,37 @@ def fTrec(n, m):
 		return m
 	if m == 0:
 		return n
-	return fTrec(n - 1, m) + 2 * fTrec(m, m - 1)
+	return fTrec(n - 1, m) + 2 * fTrec(n, m - 1)
 
 
 def fTiter(n, m):
-	pass
+	L = (n + m + 1) * [0]
+	for i in range(n + m):
+		for j in range(i + 1, -1, -1):
+			xm = j
+			xn = i + 1 - j
+			if j == i + 1:
+				L[j] = L[j - 1] + 1
+			elif j == 0:
+				L[j] = L[j] + 1
+			else:
+				L[j] = L[j] + 2 * L[j - 1]
+			if xn == n and xm == m:
+				return L[j]
+
+
+count = 0
+def pot(a, b):
+	rez = 1
+	global count
+	while b > 0:
+		if b % 2:
+			count += 1
+			rez = rez * a
+		b = b // 2
+		a = a * a
+		count += 1
+	return rez
 
 
 def findK(n, m):
@@ -93,9 +119,12 @@ def findK(n, m):
 
 # print(silniowa(100))
 # print(gdc(4, 100))
-# print(fTrec(15, 5))
+print(fTrec(15, 9))
+print(fTiter(15, 9))
 # print(fib(23) % 10)
 # print(maximum1)
 # print(fibMod(23, 10))
 # print(maximum2)
 # print(findK(3, 12345678))
+# pot(5, 1023)
+# print(count)
