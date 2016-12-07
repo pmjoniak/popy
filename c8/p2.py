@@ -16,10 +16,10 @@ for x in open('prog.pygo'):
 	elif L[1] == '=':
 		program.append( ('=', L[0], ' '.join(L[2:])))
 	elif L[0] == 'if':
-		program.append( ('if', ' '.join(L[1:-2]), L[-1]))    
+		program.append( ('if', ' '.join(L[1:-2]), L[-1]))
 	else:
-		program.append( ('error',-1) )  
-		
+		program.append( ('error',-1) )
+
 #for p in program:
 #  print (p)
 #print(etykiety)
@@ -43,4 +43,4 @@ while PC < len(program):
 		else:
 			PC += 1
 	else:
-		print ('Nieznana instrukcja', p)    
+		print ('Nieznana instrukcja', p)
