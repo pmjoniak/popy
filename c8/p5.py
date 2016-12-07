@@ -1,10 +1,11 @@
 import random
-import sys
 import itertools
+import collections
 
 
 slowka = []
 slownik = {}
+slownik_liter = collections.defaultdict(lambda: [])
 niepolskie = 'v#|q\'x'
 litery = set('chrzańufnąbelgijskośćtępwyżmłódź')
 
@@ -16,9 +17,11 @@ for wiersz in open("../c6/slowa.txt", encoding='utf-8'):
 			break
 	if nie:
 		continue
+
+	w = wiersz[:-1]
+	slownik_liter[''.join(sorted(w.lower()))].append(w)
 	slowka.append(wiersz[:-1].lower())
 	slownik[wiersz[:-1].lower()] = 1
-
 
 def sublist(L):
 	if len(L) == 0:
@@ -41,7 +44,7 @@ def polafabeton(slowka, slownik, start, dopychaj):
 				return slowa
 		else:
 			niepowodzenie += 1
-		if niepowodzenie > 1000:
+		if niepowodzenie > 100:
 			break
 	if not dopychaj:
 		return slowa
@@ -51,34 +54,35 @@ def polafabeton(slowka, slownik, start, dopychaj):
 		znalazl = False
 		for k in kandydaci:
 			w = ''.join(k)
-			if len(w) > 0 and w in slownik.keys():
-				slowa.append(w)
-				znalazl = True
-				break
-		if not znalazl:
-			break
-	while True:
-		brak = ''.join(litery - set(''.join(slowa)))
-		if len(brak) == 0:
-			return slowa
-		kandydaci = sublist(list(brak))
-		znalazl = False
-		for k in kandydaci:
-			w1 = ''.join(k)
-			for w in itertools.permutations(w1):
-				if len(w) > 0 and w in slownik.keys():
-					slowa.append(w)
+			if len(w) > 0:
+				if ''.join(sorted(w)) in slownik_liter.keys():
+					slowa.append(random.choice(slownik_liter[''.join(sorted(w))]))
 					znalazl = True
 					break
 		if not znalazl:
 			return slowa
+	# while True:
+	# 	brak = ''.join(litery - set(''.join(slowa)))
+	# 	if len(brak) == 0:
+	# 		return slowa
+	# 	kandydaci = sublist(list(brak))
+	# 	znalazl = False
+	# 	for k in kandydaci:
+	# 		w1 = ''.join(k)
+	# 		for w in itertools.permutations(w1):
+	# 			if len(w) > 0 and w in slownik.keys():
+	# 				slowa.append(w)
+	# 				znalazl = True
+	# 				break
+	# 	if not znalazl:
+	# 		return slowa
 
 
 trudnosc = {a: 0 for a in litery}
 
-N = 100000
+N = 1000
 for i in range(N):
-	pa = polafabeton(slowka, slownik, [], False)
+	pa = polafabeton(slowka, slownik, [], True)
 	brak = litery - set(''.join(pa))
 	for l in brak:
 		trudnosc[l] += 1

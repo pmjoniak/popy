@@ -91,7 +91,7 @@ def dywan(pos, length, d):
 
 turtle.speed(0)
 #turtle.tracer(10000, 0)
-dywan(turtle.Vec2D(-100, 0), 200, 6)
+dywan(turtle.Vec2D(-100, 0), 200, 4)
 #snieg(20)
 #drzewo(turtle.pos(), 90, 50)
 #fraktal(200, 4)

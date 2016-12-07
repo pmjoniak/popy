@@ -18,4 +18,4 @@ def sublist2(L0):
 
 
 print(sublist([1, 2, 3, 4]))
-print(sublist2(list('asdf')))
+print(sublist2([1, 2, 3, 4]))
