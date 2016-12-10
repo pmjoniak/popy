@@ -1,0 +1,40 @@
+Jesteś osobą projektującą okładki do książek. Otrzymałeś zlecenie na okładkę do Lalki Bolesława Prusa, przy czym zleceniodawca chciałby, żeby na tylnej części okładki znalazł się jakiś ciekawy fragment tej książki (to Ty masz wybrać, jaki dokładnie). Gdy ukończyłeś projekt, zdałeś sobie sprawę, że wybrana przez Ciebie czcionka nie ma polskich liter. Szczęśliwie na stronie tytyłowej ich nie było (B. Prus, Lalka, Wydawnictwo: Nasze Lektury, Radomsko 2011), ale co zrobić z zachęcającym do zakupu tekstem?
+
+Napisz program, który dla zadanego pliku z tekstem książki znajduje najdłuższy spójny fragment (żeby uczynić obserwacje programu ciekawszym, możesz wypisywać aktualnie najdłuższy znaleziony fragment), w którym nie występują żadne polskie znaki diakrytyczne (czyli litery z ogonkami i kreskami). Nie wolno przecinać wyrazów, długość tekstu mierzymy jako sumę długości poszczególnych wyrazów (czyli nie liczą się spacje i znaki przestankowe). Wszystkie wyrazy tekstu powinny być wyrazami polskimi (na poprzedniej liście była lista polskich słów).
+
+
+Zadanie 2.
+Twoim zadaniem będzie napisać program, który znajdzie w tekście (na przykład starej książki) Ukryte Przesłanie. Ukryte Przesłanie odczytujemy w ten sposób, że patrzymy na pierwsze litery kolejno następujących po sobie wyrazów z tekstu i sprawdzamy, w jakie wyrazy (lub zdania) się one układają. Wielkość liter oraz znaki interpunkcyjne nie mają znaczenia (czyli utożsamiamy małe i duże literki, a wyrazy oddzielone na przykład przecinkiem uznajemy za sąsiadujące).
+
+W tym zadaniu założymy dodatkowo, że Ukryte Przesłanie:
+Jest polskim słowem.
+Ma długość od 3 do 10 znaków.
+Jest najdłuższym słowem układalnym z początków wyrazów, spełniającym poprzednie punkty
+
+W przypadku, gdy takich słów jest więcej powinieneś wypisać je wszystkie. Ukryte Przesłania powinny być wypisywane wraz z ,,uzasadnieniem'': to znaczy oprócz samego słowa powinien być wypisany fragment wejściowego tekstu (z oryginalną interpunkcją i wielkością liter), który zawiera to Przesłanie (z dorzuconymi paroma wyrazami z każdej strony, aby ułatwić lokalizację kontekstu). Program powinien zwrócić wynik w kilka sekund (dla przeciętnej lektury).
+
+Zadanie 3
+Uczniowie (ku rozpaczy Pana Polonisty) twierdzili, że Nad Niemnem jest nudne, i że jak już muszą czytać takie starocie, to niech lepiej to będzie Faraon (bo tam przynajmniej jakieś bitwy, polityka i inne takie). Pan Polonista z kolei bronił Orzeszkowej, ale trochę brakowało mu niepodważalnych argumentów.
+
+Przyjmiemy, że książka jest nudna, jeżeli jakiś fragment w niej się powtarza, im ten fragment jest dłuższy (ma więcej znaków), tym książka jest nudniejsza. Napisz program, który wczytuje (długi) tekst i znajduje najdłuższy fragment, który w tym tekście występuje więcej niż raz. Wykonaj ten program dla wspomnianych w zadaniu powieści. Czy Polonista miał rację?
+
+Uwaga: to zadanie może nie być bardzo łatwe, jeżeli chcesz, by program wykonał się szybko.
+
+
+Zadanie 4
+
+Pan Polonista kazał dzieciom nauczyć się kawałka (wybranego) Pana Tadeusza. Pani z Matematyki kazała dzieciom nauczyć się cyfr liczby Pi (pewnej ilości początkowych). Sprytny Jasiu postanowił, że rozwiąże oba zadania za jednym razem, czyli nauczy się takiego fragmentu Pana Tadeusza, który koduje możliwie najwięcej początkowych cyfr liczby Pi. Słowo koduje cyfrę, jeżeli ma tyle znaków, jaka jest wartość cyfry, przy czym cyfrę 0 kodujemy za pomocą słowa o długości 10. Przecinki, kropki, etc pomijamy. Napisz program, który pomoże Sprytnemu Jasiowi, znaleźć możliwie duży fragment Pana Tadeusza (*), kodujący początek liczby Pi. Cyfry liczby Pi (wystarczy początkowe 100) powinienś obliczyć samodzielnie, korzystając na przykład z jakiegoś szeregu na stronie Wikipedii.
+
+
+
+Zadanie literackie. Autor: Jakub Kowalski
+Zadanie 1.
+Wydawca kolekcjonerskiej edycji Lalki Bolesław Prusa zatrudnił Cię do znalezienia odpowiedniego fragmentu książki na tylną część okładki. Ponieważ format książki nie jest jeszcze znany, rozważa się także kilka wersji "sprofilowanych" pod kątem ulubionych bohaterów dla czytelnika, warunki "odpowiedniości" fragmentu nie są jednoznaczne i musisz być przygotowany na każdą ewentualność.
+Wiesz jednak, że zostaniesz poproszony o znalezienie fragmentu składającego się maksymalnie z pewnej określonej liczby wyrazów który zawiera jak najwięcej odwołań do podanego bohatera powieści. Wydawca może Cię poprosić np. o 120 wyrazowy fragment w którym jak najczęściej wspominany jest Wokulski (taki fragment istnieje i Wokulski jest w nim wspominany 8 razy).
+Napisz program, który pozwoli Ci wypełnić zadanie postawione przez wydawcę bez potrzeby pisania za każdym razem nowego kodu.
+Wskazówka: Poszukaj w bibliotece standardowej funkcji dla stringów która zrzuci z ciebie obowiązek ręcznego sprawdzania wszystkich możliwych odmian poszukiwanego wyrazu.
+
+Zadanie 2.
+
+Dodatkowo (z obietnicą premii) wydawca, który sam bardzo lubię tę powieść, poprosił Cię o wypisanie statystyki jak często różni bohaterowie są przywoływani w tekście. Twoim zadaniem jest wypisanie dziesięciu bohaterów powieści, którzy najczęściej występują w tekście wraz z liczbą wystąpień (jeśli nie pamiętasz aż tylu postaci, to wygeneruj statystykę dla tylu bohaterów ilu pamiętasz).
+Nie jest to zadanie w którym w prosty sposób da się programistycznie uzyskać jedyną najlepszą odpowiedź, postaraj się jednak trochę pomysleć i jak najbardziej do niej zbliżyć.
