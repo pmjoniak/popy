@@ -35,7 +35,7 @@ from PIL import Image
 
 # L = [105, 10, 16, 101, 103, 14, 105, 16, 121]
 
-k = """146,399,163,403,170,393,169,391,166,386,170,381,170,371,170,355,169,346,167,335,170,329,170,320,170,
+k1 = """146,399,163,403,170,393,169,391,166,386,170,381,170,371,170,355,169,346,167,335,170,329,170,320,170,
 310,171,301,173,290,178,289,182,287,188,286,190,286,192,291,194,296,195,305,194,307,191,312,190,316,
 190,321,192,331,193,338,196,341,197,346,199,352,198,360,197,366,197,373,196,380,197,383,196,387,192,
 389,191,392,190,396,189,400,194,401,201,402,208,403,213,402,216,401,219,397,219,393,216,390,215,385,
@@ -55,10 +55,96 @@ k = """146,399,163,403,170,393,169,391,166,386,170,381,170,371,170,355,169,346,1
 332,155,348,156,353,153,366,149,379,147,394,146,399
 """.replace('\n','').split(',')
 
-im = Image.open("good.jpg")
-for i in range(len(k)//2):
-	x = int(k[2 * i + 0])
-	y = int(k[2 * i + 1])
-	c = im.getpixel((x, y))
-	print(c)
+k2 = """
+156,141,165,135,169,131,176,130,187,134,191,140,191,146,186,150,179,155,175,157,168,157,163,157,159,
+157,158,164,159,175,159,181,157,191,154,197,153,205,153,210,152,212,147,215,146,218,143,220,132,220,
+125,217,119,209,116,196,115,185,114,172,114,167,112,161,109,165,107,170,99,171,97,167,89,164,81,162,
+77,155,81,148,87,140,96,138,105,141,110,136,111,126,113,129,118,117,128,114,137,115,146,114,155,115,
+158,121,157,128,156,134,157,136,156,136""".replace('\n','').split(',')
 
+L1 = []
+L2 = []
+for a in k1:
+	L1.append(int(a))
+for a in k2:
+	L2.append(int(a))
+
+# print(len(L1), len(L2))
+# print(max(L1), max(L2))
+
+import turtle
+
+# for i in range(len(L2) // 2):
+# 	x = L2[2 * i + 0]
+# 	y = L2[2 * i + 1]
+# 	turtle.setpos(x, y)
+
+def getNext(s):
+	c = s[0]
+	for i in range(1,len(s)):
+		if s[i] != c:
+			return (c, i)
+	return (c, len(s))
+
+a = '1'
+for i in range(1, 31):
+	res = ''
+	while len(a) > 0:
+		n = getNext(a)
+		res += str(n[1]) + n[0]
+		a = a[n[1]:]
+
+	#print(i, len(res))
+	a = res
+
+
+# turtle.done();
+# for i in range(len(L)//2):
+# 	x = L[2 * i + 0]
+# 	y = L[2 * i + 1]
+# 	c = im.getpixel((x, y))
+# 	g = (c[0]+c[1]+c[2]) // 3
+# 	print(chr(g),end='')
+
+def kwadrat(bok, kolor):
+	# turtle.pencolor(kolor)
+	turtle.fillcolor(kolor)
+	turtle.begin_fill()
+	for i in range(4):
+		turtle.forward(bok)
+		turtle.left(90)
+	turtle.end_fill()
+
+def kwadrat2(n, img, bok=2):
+	resized = img.resize((n, n))
+	for i in range(n):
+		for j in range(n):
+			# kolor = (random.uniform(0, 1), random.uniform(0, 1), random.uniform(0, 1))
+			k = resized.getpixel((i, j))
+			#print(k)
+			#if k[3] == 0:
+			#	kolor = (1, 1, 1)
+			#else:
+			kolor = (k[0] / 255, k[1] / 255, k[2] / 255)
+			kwadrat(bok, kolor)
+			turtle.forward(bok)
+		turtle.left(90)
+		turtle.forward(bok)
+		turtle.left(90)
+		turtle.forward(bok * n)
+		turtle.left(180)
+
+
+
+im = Image.open("evil1.jpg")
+print(im.mode)
+#im.show()
+pix = im.load()
+
+for x in range(im.width):
+	for y in range(im.height):
+		if not (y % 6 == 0 and x % 6 == 0):
+			pix[x,y] = (0,0,0)
+
+
+im.show()
